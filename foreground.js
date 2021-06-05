@@ -29,16 +29,16 @@ function handleSelection() {
 
 	// Incase nothing is found, check for match without the basic ending
 	basicEndings.some((ending) => {
-	// Parse the search string into something that can be checked against the basicForm
-	// Search: desboltagas -> desboltag
-	if (search.slice(-1) == ending) { // a,e,i,o
-		searchWithoutEnding = search.slice(0,-1); // bakteria -> bakteri
-		return true;
-	}
-	if (search.slice(-2) == ending) { // ar,as
-		searchWithoutEnding = search.slice(0,-2); // desboltagar -> desboltag
-		return true;
-	}
+		// Parse the search string into something that can be checked against the basicForm
+		// Search: desboltagas -> desboltag
+		if (search.slice(-1) == ending) { // a,e,i,o
+			searchWithoutEnding = search.slice(0,-1); // bakteria -> bakteri
+			return true;
+		}
+		if (search.slice(-2) == ending) { // ar,as
+			searchWithoutEnding = search.slice(0,-2); // desboltagar -> desboltag
+			return true;
+		}
 	});
 
 	// Main loop - search the dictionary
@@ -46,22 +46,19 @@ function handleSelection() {
 		// Unparse the key words, like anti-bakteri.a to antibakteria
 		let unparsedKey = key.replace(/\./g, ''); // replace .
 		unparsedKey = unparsedKey.replace(/\-/g, ''); // replace -
-		//console.log(unparsedKey);
 		
 		// Check for an exact match
 		if (unparsedKey == search) {
 			result = {key: key, meaning: data[key].meaning};
-			break; 
+			break; // quit the search if you are happy with this
 		}
 
 		// We can also collect non exact matches
 		let keyWithoutEnding = key.slice(0, key.lastIndexOf(".")); // des.bolt.ag.ar -> des.bolt.ag
 		keyWithoutEnding = keyWithoutEnding.replace(/\./g, ''); // replace . so des.bolt.ag -> desboltag
-		//console.log(keyWithoutEnding);
 		// If searchWithoutEnding is set, try search for that
 		if (searchWithoutEnding !== '' && searchWithoutEnding == keyWithoutEnding) {
 			alternativeResults.push({key: key, meaning: data[key].meaning});
-			break;
 		}
 	}
 	//console.log("Result 1", result);
@@ -75,7 +72,7 @@ function handleSelection() {
 }
 
 function appendIdoPopupStyle() {
-    let lightBoxStyle = "#IdoLightBox {display:none; background:#fff; opacity:1; position:fixed; top:10%; left:5%; width:300px; height:60px; z-index:1000; border:2px solid #000;margin: 0px; padding:10px; padding-top:5px;}";
+    let lightBoxStyle = "#IdoLightBox {display:none; background:#fff; opacity:1; position:fixed; top:10%; left:3%; width:300px; height:60px; z-index:1000; border:2px solid #000;margin: 0px; padding:10px; padding-top:5px;}";
     let dlStyle = "#IdoLightBox > dl {margin: 0px; padding:0px;}";
     let dtStyle = "#IdoLightBox > dl > dt {margin: 0px; padding:0px; padding-top:5px; font-family:'Times New Roman',serif; font-size:16px; color:black; line-height: 1.0; font-weight: bold; text-decoration: none;}";
     let ddStyle = "#IdoLightBox > dl > dd {margin: 0px; padding:0px; padding-top:2px; font-family:'Times New Roman',serif; font-size:16px; color:black; line-height: 1.0; font-weight: normal; text-decoration: none;}";
