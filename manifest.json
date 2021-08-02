@@ -11,9 +11,8 @@
         "service_worker": "background.js"
     },
     "action": {
-        "default_popup": "popup.html",
         "default_icons": {
-            "64": "images/icon48.png",
+            "48": "images/icon48.png",
             "128": "images/icon128.png"
         }
     },
@@ -33,6 +32,12 @@
             "resources": [ "db/20210525_ido_min.json" ],
             "matches": ["<all_urls>"],
             "extension_ids": []
+        }
+    ],
+     "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "js": ["contentScript.js"]
         }
     ]
 }

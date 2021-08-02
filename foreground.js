@@ -1,14 +1,20 @@
-//console.log("forground");
-
-let data = {};
-url = chrome.runtime.getURL('db/20210525_ido_min.json'); // the database
+ido_data = {}; // See contentScript.js
+url = chrome.runtime.getURL('db/20210525_ido_min.json'); // returns database url
 
 fetch(url) // Fetch the database
 .then((response) => response.json()) // assuming file contains json
 .then((json) => {
-	data = json;
+	ido_data = json;
 	document.addEventListener('mouseup', handleSelection, false);
 });
+
+// Kick things off
+appendIdoPopupStyle();
+createIdoLightBox();
+
+/**
+ * FUNCTIONS START 
+ */
 
 // Process the text selection 
 function handleSelection() {
@@ -42,14 +48,14 @@ function handleSelection() {
 	});
 
 	// Main loop - search the dictionary
-	for (const key in data) {
+	for (const key in ido_data) {
 		// Unparse the key words, like anti-bakteri.a to antibakteria
 		let unparsedKey = key.replace(/\./g, ''); // replace .
 		unparsedKey = unparsedKey.replace(/\-/g, ''); // replace -
 		
 		// Check for an exact match
 		if (unparsedKey == search) {
-			result = {key: key, meaning: data[key].meaning};
+			result = {key: key, meaning: ido_data[key].meaning};
 			break; // quit the search if you are happy with this
 		}
 
@@ -58,7 +64,7 @@ function handleSelection() {
 		keyWithoutEnding = keyWithoutEnding.replace(/\./g, ''); // replace . so des.bolt.ag -> desboltag
 		// If searchWithoutEnding is set, try search for that
 		if (searchWithoutEnding !== '' && searchWithoutEnding == keyWithoutEnding) {
-			alternativeResults.push({key: key, meaning: data[key].meaning});
+			alternativeResults.push({key: key, meaning: ido_data[key].meaning});
 		}
 	}
 	//console.log("Result 1", result);
@@ -144,5 +150,4 @@ function closeIdoLightBox() {
     document.getElementById('IdoLightBox').style.display = 'none';
 }
 
-appendIdoPopupStyle();
-createIdoLightBox();
+

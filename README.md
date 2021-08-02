@@ -8,7 +8,6 @@ Based on https://chrome.google.com/webstore/detail/eklegu/kiagpjldfkemppnoobpmgm
 
 Source: https://bitbucket.org/eklegu/eklegu/src
 
+Learning about Google extensions: https://www.youtube.com/watch?v=5E94S1J2vBI 
+
 ### To do
-
-The plugin currently runs on every page. Make the user have to manually activate it for the page they want to use it on. 
-
