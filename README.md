@@ -21,8 +21,12 @@ Learning about Google extensions: https://www.youtube.com/watch?v=5E94S1J2vBI
 1. Download the master branch https://github.com/enfrte/ido-vortaro-angla/archive/refs/heads/master.zip
 1. Unzip the file.
 1. Go to browser Extenstions and turn on "Developer mode"
-1. 
-1. 
+1. Click "Load unpacked" and follow the instructions. 
+1. Enable the extension and pin the Ido icon to the browser. 
+1. Find a page with some Ido language. 
+1. Click the blue Ido icon - It should turn green. 
+1. Paint or double click an Ido word.
+1. The translation should appear. 
 
 ### To do
 
