@@ -1,6 +1,6 @@
 {
     "name": "Ido Vortaro Angla",
-    "description": "",
+    "description": "Ido to English word lookup",
     "version": "0.1.0",
     "manifest_version": 3,
     "icons": {
@@ -16,7 +16,6 @@
             "128": "images/icon128.png"
         }
     },
-    "options_page": "options.html",
     "permissions": [
         "storage",
         "activeTab",
@@ -32,12 +31,6 @@
             "resources": [ "db/20210525_ido_min.json" ],
             "matches": ["<all_urls>"],
             "extension_ids": []
-        }
-    ],
-     "content_scripts": [
-        {
-            "matches": ["*://*/*"],
-            "js": ["contentScript.js"]
         }
     ]
 }

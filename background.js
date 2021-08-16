@@ -1,11 +1,3 @@
-// Console log does not work here.
-console.log("background.js ran");
-
-//chrome.runtime.onInstalled.addListener(() => {
-	// default state goes here
-	// this runs ONE TIME ONLY (unless the user reinstalls your extension)
-//});
-
 // Listen for messages
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
