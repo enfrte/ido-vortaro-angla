@@ -78,7 +78,7 @@ function handleSelection() {
 }
 
 function appendIdoPopupStyle() {
-    let lightBoxStyle = "#IdoLightBox {display:none; background:#fff; opacity:1; position:fixed; top:10%; left:3%; width:300px; height:60px; z-index:1000; border:2px solid #000;margin: 0px; padding:10px; padding-top:5px;}";
+    let lightBoxStyle = "#IdoLightBox {display:none; background:#fff; opacity:1; position:fixed; top:10%; left:3%; width:300px; height:60px; z-index:2147483647; border:2px solid #000;margin: 0px; padding:10px; padding-top:5px;}";
     let dlStyle = "#IdoLightBox > dl {margin: 0px; padding:0px;}";
     let dtStyle = "#IdoLightBox > dl > dt {margin: 0px; padding:0px; padding-top:5px; font-family:'Times New Roman',serif; font-size:16px; color:black; line-height: 1.0; font-weight: bold; text-decoration: none;}";
     let ddStyle = "#IdoLightBox > dl > dd {margin: 0px; padding:0px; padding-top:2px; font-family:'Times New Roman',serif; font-size:16px; color:black; line-height: 1.0; font-weight: normal; text-decoration: none;}";
