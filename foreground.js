@@ -30,7 +30,7 @@ function handleSelection() {
 
 	let result = '';
 	let alternativeResults = [];
-	let basicEndings = ['o','a','e','i','ar','as'];
+	let basicEndings = ['o','a','e','i','ar','as', 'ir', 'or', 'is', 'os', 'us', 'ez'];
 	let searchWithoutEnding = '';
 
 	// Incase nothing is found, check for match without the basic ending
