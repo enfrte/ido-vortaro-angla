@@ -1,4 +1,4 @@
-ido_data = {}; // See contentScript.js
+ido_data = {}; 
 url = chrome.runtime.getURL('db/20210525_ido_min.json'); // returns database url
 
 fetch(url) // Fetch the database
@@ -45,6 +45,8 @@ function handleSelection() {
 			searchWithoutEnding = search.slice(0,-2); // desboltagar -> desboltag
 			return true;
 		}
+
+		// TODO: After processing the endings you could also look for affixes, for example -ad- and -iz-. These are also parsed with the ".". For example -iz- => nom.iz.ar - to be named (to "-be provided-" with a name). All affixes can be found here http://romaniczo.com/ido/gramatiko/grammar_13.html
 	});
 
 	// Main loop - search the dictionary
@@ -106,8 +108,13 @@ function createIdoLightBox() {
 // The results output
 function showIdoLightBox(response) {
 	//debugger;
-    if (!response) console.log('Error: Missing response');
-	
+    if (!response) {
+		response = { 
+			result: { key: "Error", meaning: "Missing response"},
+			alternativeResults: []
+		};
+	}
+
 	let lightBoxDiv = document.getElementById('IdoLightBox');
 
 	// Remove any old entries
